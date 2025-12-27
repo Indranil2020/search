@@ -1,0 +1,98 @@
+# Source Configuration
+# Defines all available data sources and their settings
+
+sources:
+  # Priority 1: Primary academic databases
+  pubmed:
+    name: "PubMed/MEDLINE"
+    enabled: true
+    priority: 1
+    rate_limit: 10  # with API key
+    timeout: 30
+    base_url: "https://eutils.ncbi.nlm.nih.gov/entrez/eutils"
+    coverage: "35M+ biomedical papers"
+    best_for: ["medicine", "biology", "health"]
+    
+  semantic_scholar:
+    name: "Semantic Scholar"
+    enabled: true
+    priority: 1
+    rate_limit: 0.33  # 100 per 5 min
+    timeout: 30
+    base_url: "https://api.semanticscholar.org/graph/v1"
+    coverage: "200M+ papers"
+    best_for: ["cs", "ai", "broad"]
+    
+  openalex:
+    name: "OpenAlex"
+    enabled: true
+    priority: 1
+    rate_limit: 10
+    timeout: 30
+    base_url: "https://api.openalex.org"
+    coverage: "240M+ works"
+    best_for: ["broad", "open_data"]
+    
+  # Priority 2: Preprint servers
+  arxiv:
+    name: "arXiv"
+    enabled: true
+    priority: 2
+    rate_limit: 1
+    timeout: 30
+    base_url: "http://export.arxiv.org/api/query"
+    coverage: "2M+ preprints"
+    best_for: ["physics", "math", "cs", "biology"]
+    
+  # Priority 3: Metadata databases
+  crossref:
+    name: "CrossRef"
+    enabled: true
+    priority: 3
+    rate_limit: 50
+    timeout: 30
+    base_url: "https://api.crossref.org"
+    coverage: "130M+ DOIs"
+    best_for: ["doi_resolution", "metadata"]
+    
+  # Priority 4: Open access repositories
+  core:
+    name: "CORE"
+    enabled: true
+    priority: 4
+    rate_limit: 10
+    timeout: 30
+    base_url: "https://api.core.ac.uk/v3"
+    coverage: "200M+ OA papers"
+    best_for: ["open_access"]
+    
+  base:
+    name: "BASE"
+    enabled: true
+    priority: 4
+    rate_limit: 1
+    timeout: 30
+    base_url: "https://api.base-search.net"
+    coverage: "270M+ documents"
+    best_for: ["repositories", "europe"]
+    
+  europe_pmc:
+    name: "Europe PMC"
+    enabled: true
+    priority: 4
+    rate_limit: 10
+    timeout: 30
+    base_url: "https://www.ebi.ac.uk/europepmc/webservices/rest"
+    coverage: "40M+ life science"
+    best_for: ["europe", "biomedical"]
+
+  # Utility services
+  unpaywall:
+    name: "Unpaywall"
+    enabled: true
+    priority: 5
+    rate_limit: 10
+    timeout: 15
+    base_url: "https://api.unpaywall.org/v2"
+    coverage: "OA discovery"
+    best_for: ["oa_finding"]

@@ -1,0 +1,115 @@
+# Reliability Scoring Weights
+# Defines how reliability scores are calculated
+
+weights:
+  peer_review:
+    max_score: 0.30
+    values:
+      peer_reviewed: 0.30
+      conference: 0.20
+      preprint: 0.10
+      unknown: 0.05
+      
+  journal:
+    max_score: 0.20
+    values:
+      high_impact: 0.20
+      reputable_publisher: 0.15
+      other: 0.10
+      unknown: 0.00
+      
+  citations:
+    max_score: 0.20
+    thresholds:
+      - min: 500
+        score: 0.20
+      - min: 100
+        score: 0.15
+      - min: 25
+        score: 0.10
+      - min: 5
+        score: 0.05
+      - min: 1
+        score: 0.02
+      - min: 0
+        score: 0.00
+        
+  verification:
+    max_score: 0.20
+    thresholds:
+      - min: 5
+        score: 0.20
+      - min: 3
+        score: 0.15
+      - min: 2
+        score: 0.10
+      - min: 1
+        score: 0.05
+        
+  recency:
+    max_score: 0.10
+    thresholds:
+      - max_age: 2
+        score: 0.10
+      - max_age: 5
+        score: 0.07
+      - max_age: 10
+        score: 0.04
+      - max_age: 999
+        score: 0.02
+
+# Color thresholds
+colors:
+  green:
+    min_score: 0.80
+    label: "High Reliability"
+  yellow:
+    min_score: 0.50
+    label: "Moderate Reliability"
+  red:
+    min_score: 0.00
+    label: "Lower Reliability"
+
+# Penalties
+penalties:
+  retraction: 1.0  # Total score becomes 0
+  contradiction: 0.05  # Per contradiction, max 0.25
+
+# High impact journals
+high_impact_journals:
+  - nature
+  - science
+  - cell
+  - "the lancet"
+  - "new england journal of medicine"
+  - jama
+  - bmj
+  - "nature medicine"
+  - "nature genetics"
+  - "nature biotechnology"
+  - "nature communications"
+  - "proceedings of the national academy of sciences"
+  - "physical review letters"
+  - "journal of the american chemical society"
+  - "angewandte chemie"
+  - "chemical reviews"
+  - neuron
+  - immunity
+  - "molecular cell"
+
+# Reputable publishers
+reputable_publishers:
+  - "nature publishing group"
+  - springer
+  - elsevier
+  - wiley
+  - "cell press"
+  - "american chemical society"
+  - "royal society of chemistry"
+  - ieee
+  - "american physical society"
+  - "oxford university press"
+  - "cambridge university press"
+  - plos
+  - frontiers
+  - bmc
